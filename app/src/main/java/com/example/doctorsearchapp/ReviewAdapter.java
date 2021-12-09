@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -65,12 +66,14 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         private TextView usernameTv;
         private TextView reviewTv;
         private ImageView profilePicIv;
+        private RatingBar rbDoctorRating;
 
         public ReviewViewHolder(@NonNull View itemView) {
             super(itemView);
             usernameTv = itemView.findViewById(R.id.usernameTV);
             reviewTv = itemView.findViewById(R.id.reviewTV);
             profilePicIv = itemView.findViewById(R.id.profilePicIV);
+            rbDoctorRating = itemView.findViewById(R.id.rbDoctorRating);
 
         }
 
@@ -84,6 +87,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
             {
                Glide.with(context).load(user.getProfilePic().getUrl()).into(profilePicIv);
             }
+
+            rbDoctorRating.setRating(review.getRating());
 
         }
     }
