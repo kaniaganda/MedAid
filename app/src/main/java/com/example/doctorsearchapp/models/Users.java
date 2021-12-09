@@ -48,6 +48,11 @@ public class Users {
             favorites = new ArrayList<String>();
         }
 
+        if(favorites.contains(doctorId))
+        {
+            return;
+        }
+
         favorites.add(doctorId);
         user.put(KEY_FAVORITES, favorites);
         user.saveInBackground();

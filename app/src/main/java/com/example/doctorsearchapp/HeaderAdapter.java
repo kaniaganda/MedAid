@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.load.data.StreamLocalUriFetcher;
 import com.example.doctorsearchapp.fragments.ComposeFragment;
 import com.example.doctorsearchapp.fragments.DetailFragment;
 import com.example.doctorsearchapp.models.Doctor;
@@ -89,6 +90,11 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
 
             nameTV.setText(doctor.getDoctorName());
             addressTV.setText(doctor.getLocation());
+
+            if(user.getFavorites().contains(doctor.getObjectId()))
+            {
+                ((CheckBox)favoritesBtn).setChecked(true);
+            }
 
             reviewBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
