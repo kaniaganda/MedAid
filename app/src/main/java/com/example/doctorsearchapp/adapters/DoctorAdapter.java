@@ -2,6 +2,7 @@ package com.example.doctorsearchapp.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,14 @@ import com.example.doctorsearchapp.MainActivity;
 import com.example.doctorsearchapp.R;
 import com.example.doctorsearchapp.fragments.DetailFragment;
 import com.example.doctorsearchapp.models.Doctor;
+import com.example.doctorsearchapp.models.Reviews;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder> {
@@ -81,8 +87,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
         public void bind(Doctor doctor) {
             tvDoctorName.setText(doctor.getDoctorName());
             tvLocation.setText(doctor.getLocation());
-            //rbOverallRating.setRating(doctor.getOverallRating());
-
+            doctor.setRating(rbOverallRating);
         }
     }
 }

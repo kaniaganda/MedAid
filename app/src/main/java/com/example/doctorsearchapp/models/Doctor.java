@@ -1,13 +1,20 @@
 package com.example.doctorsearchapp.models;
 
 import android.os.Parcelable;
+import android.util.Log;
+import android.widget.RatingBar;
 
+import com.example.doctorsearchapp.R;
+import com.parse.FindCallback;
 import com.parse.ParseClassName;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @ParseClassName("Doctor")
 @Parcel(analyze = Doctor.class)
@@ -16,7 +23,7 @@ public class Doctor extends ParseObject implements Parcelable {
     public static final String KEY_DOCTOR_NAME = "doctorName";
     public static final String KEY_LOCATION = "location";
     public static final String KEY_REVIEW_LIST = "reviewList";
-//    public static final String KEY_RATING = "overallRating";
+    public static final String KEY_RATING = "overallRating";
 
     // Empty constructor for Parceler library
     public Doctor() { }
@@ -48,6 +55,53 @@ public class Doctor extends ParseObject implements Parcelable {
 
     public void setLocation(String location) {
         put(KEY_LOCATION, location);
+    }
+
+    public Float getRating()
+    {
+        return (Float) get(KEY_RATING);
+    }
+
+    public void saveRating(Float rating)
+    {
+        put(KEY_RATING, rating);
+        saveInBackground();
+    }
+
+    public void setRating(RatingBar rbOverallRating)
+    {
+        ArrayList<String> reviews = getReviews();
+        ParseQuery<Reviews> query = ParseQuery.getQuery(Reviews.class);
+        Float originalRating = getRating();
+
+        query.whereContainedIn("objectId", reviews);
+
+        query.findInBackground(new FindCallback<Reviews>() {
+            @Override
+            public void done(List<Reviews> reviews, ParseException e) {
+
+                Float maxRating = reviews.size() * 5.0f;
+                int rating = 0;
+
+                if (e != null)
+                {
+                    Log.i("DoctorAdpater", "something went wrong");
+                }
+
+                for (Reviews review : reviews)
+                {
+                    rating += review.getRating();
+                }
+
+                Float finalRating = (rating / maxRating) * 5.0f;
+
+                if(originalRating != finalRating)
+                {
+                    saveRating(finalRating);
+                }
+                rbOverallRating.setRating(finalRating);
+            }
+        });
     }
 
 //    public int doctorId;

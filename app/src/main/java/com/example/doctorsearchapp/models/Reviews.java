@@ -11,6 +11,7 @@ public class Reviews extends ParseObject {
     public static final String KEY_USER = "userId";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_DOCTOR = "doctorId";
+    public static final String KEY_RATING = "rating";
 
     public String getReview()
     {
@@ -30,6 +31,11 @@ public class Reviews extends ParseObject {
     public ParseUser getUser()
     {
         return getParseUser(KEY_USER);
+    }
+
+    public int getRating()
+    {
+        return (int) get(KEY_RATING);
     }
 }
 
