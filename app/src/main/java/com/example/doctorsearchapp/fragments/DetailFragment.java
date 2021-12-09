@@ -22,6 +22,7 @@ import com.example.doctorsearchapp.models.Reviews;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class DetailFragment extends Fragment {
         // Send doctor object to HeaderAdapter
         Bundle b = this.getArguments();
         doctor = b.getParcelable("doctor");
-        headerAdapter = new HeaderAdapter(getContext(), doctor);
+        headerAdapter = new HeaderAdapter(getContext(), doctor, ParseUser.getCurrentUser());
 
         concatAdapter = new ConcatAdapter(headerAdapter,adapter);
 

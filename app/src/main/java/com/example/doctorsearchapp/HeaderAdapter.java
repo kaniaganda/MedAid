@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -21,9 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.doctorsearchapp.fragments.ComposeFragment;
 import com.example.doctorsearchapp.fragments.DetailFragment;
 import com.example.doctorsearchapp.models.Doctor;
+import com.example.doctorsearchapp.models.Users;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -33,12 +36,14 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
     private Context context;
     Doctor doctor;
     String address;
+    Users user;
 
     // Bundle test
-    public HeaderAdapter(Context context, Doctor currentDoctor)
+    public HeaderAdapter(Context context, Doctor currentDoctor, ParseUser currUser)
     {
         this.context = context;
         doctor = currentDoctor;
+        this.user = new Users(currUser);
     }
 
     // Inflate the view and return the HeaderViewHolder
@@ -68,6 +73,7 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
         private TextView addressTV;
         private Button reviewBtn;
         private Button searchBtn;
+        private Button favoritesBtn;
         private String address;
         private List<Doctor> allDoctors;
 
@@ -79,6 +85,7 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
             addressTV = itemView.findViewById(R.id.addressTV);
             reviewBtn = itemView.findViewById(R.id.reviewBtn);
             searchBtn = itemView.findViewById(R.id.btnSearch);
+            favoritesBtn = itemView.findViewById(R.id.favoritesBtn);
 
             nameTV.setText(doctor.getDoctorName());
             addressTV.setText(doctor.getLocation());
@@ -109,6 +116,22 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
 
                     context.startActivity(mapIntent);
 
+                }
+            });
+
+            favoritesBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (((CheckBox) view).isChecked())
+                    {
+                        Toast.makeText(context, "Adding to favorites", Toast.LENGTH_SHORT).show();
+                        user.addFavorite(doctor.getObjectId());
+                    }
+                    else
+                    {
+                        Toast.makeText(context, "Removing from favorites", Toast.LENGTH_SHORT).show();
+                        user.removeFavorite(doctor.getObjectId());
+                    }
                 }
             });
         }

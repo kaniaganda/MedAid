@@ -35,7 +35,8 @@
                 android:text="Dr.NumberOne"
                 android:textColor="@color/text"
                 android:textSize="26sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/addressTV"
@@ -59,6 +60,16 @@
                 android:textColor="@color/text"
                 app:cornerRadius="30dp" />
         </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/favoritesBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="-8dp"
+            android:button="@android:drawable/star_off" />
     </RelativeLayout>
 
     <TextView
