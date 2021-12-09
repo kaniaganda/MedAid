@@ -1,5 +1,6 @@
 package com.example.doctorsearchapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,10 +10,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.doctorsearchapp.LoginActivity;
+import com.example.doctorsearchapp.MainActivity;
 import com.example.doctorsearchapp.R;
 import com.example.doctorsearchapp.models.Users;
 import com.parse.ParseFile;
@@ -26,6 +30,7 @@ public class ProfileFragment extends Fragment {
     private TextView tvUsername;
     private TextView tvUserId;
     private Users currUser;
+    private Button logoutBtn;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -44,6 +49,7 @@ public class ProfileFragment extends Fragment {
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
         tvUsername = view.findViewById(R.id.tvUsername);
         tvUserId = view.findViewById(R.id.tvUserId);
+        logoutBtn = view.findViewById(R.id.btnLogout);
 
         currUser = new Users(ParseUser.getCurrentUser());
         ParseFile profileImage = currUser.getProfilePic();
@@ -55,5 +61,18 @@ public class ProfileFragment extends Fragment {
         {
             Glide.with(getContext()).load(profileImage.getUrl()).into(ivProfileImage);
         }
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
+    }
+
+    private void signOut() {
+        ParseUser.logOut();
+        Intent i = new Intent(getContext(), LoginActivity.class);
+        startActivity(i);
     }
 }
