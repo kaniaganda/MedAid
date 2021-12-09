@@ -57,22 +57,10 @@ public class Doctor extends ParseObject implements Parcelable {
         put(KEY_LOCATION, location);
     }
 
-    public Float getRating()
-    {
-        return (Float) get(KEY_RATING);
-    }
-
-    public void saveRating(Float rating)
-    {
-        put(KEY_RATING, rating);
-        saveInBackground();
-    }
-
     public void setRating(RatingBar rbOverallRating)
     {
         ArrayList<String> reviews = getReviews();
         ParseQuery<Reviews> query = ParseQuery.getQuery(Reviews.class);
-        Float originalRating = getRating();
 
         query.whereContainedIn("objectId", reviews);
 
@@ -95,10 +83,6 @@ public class Doctor extends ParseObject implements Parcelable {
 
                 Float finalRating = (rating / maxRating) * 5.0f;
 
-                if(originalRating != finalRating)
-                {
-                    saveRating(finalRating);
-                }
                 rbOverallRating.setRating(finalRating);
             }
         });

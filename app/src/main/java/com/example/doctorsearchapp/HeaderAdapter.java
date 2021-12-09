@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -76,6 +77,7 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
         private Button reviewBtn;
         private Button searchBtn;
         private Button favoritesBtn;
+        private RatingBar rbDoctorRating;
         private String address;
         private List<Doctor> allDoctors;
 
@@ -88,9 +90,11 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
             reviewBtn = itemView.findViewById(R.id.reviewBtn);
             searchBtn = itemView.findViewById(R.id.btnSearch);
             favoritesBtn = itemView.findViewById(R.id.favoritesBtn);
+            rbDoctorRating = itemView.findViewById(R.id.rbDoctorRating);
 
             nameTV.setText(doctor.getDoctorName());
             addressTV.setText(doctor.getLocation());
+            doctor.setRating(rbDoctorRating);
 
             if(user.getFavorites().contains(doctor.getObjectId()))
             {
