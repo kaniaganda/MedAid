@@ -61,6 +61,22 @@ public class SearchFragment extends Fragment {
         // Set layout manager on recycler view
         rvSearchResults.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        svDoctors.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Log.i(TAG, s);
+                search(s);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                Log.i(TAG, s);
+                search(s);
+                return true;
+            }
+        });
+
         queryDoctors();
     }
 
@@ -78,6 +94,30 @@ public class SearchFragment extends Fragment {
                 for (Doctor doctor : doctors) {
                     Log.i(TAG, "Doctor: " + doctor.getDoctorName() + ", " + doctor.getLocation());
                 }
+                allDoctors.clear();
+                allDoctors.addAll(doctors);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void search(String queryString)
+    {
+        ParseQuery<Doctor> query = ParseQuery.getQuery(Doctor.class);
+        query.whereContains("doctorName", queryString);
+
+        // Get all doctors
+        query.findInBackground(new FindCallback<Doctor>() {
+            @Override
+            public void done(List<Doctor> doctors, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting doctors", e);
+                    return;
+                }
+                for (Doctor doctor : doctors) {
+                    Log.i(TAG, "Doctor: " + doctor.getDoctorName() + ", " + doctor.getLocation());
+                }
+                allDoctors.clear();
                 allDoctors.addAll(doctors);
                 adapter.notifyDataSetChanged();
             }
