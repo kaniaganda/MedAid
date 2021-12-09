@@ -68,6 +68,7 @@ public class ComposeFragment extends Fragment {
         Reviews review = new Reviews();
         review.setReview(newReview);
         review.setUser(currUser);
+        review.setRating(4);
 
         review.saveInBackground(new SaveCallback() {
             @Override

@@ -33,6 +33,11 @@ public class Reviews extends ParseObject {
         return getParseUser(KEY_USER);
     }
 
+    public void setRating(int rating)
+    {
+        put(KEY_RATING, rating);
+    }
+
     public int getRating()
     {
         return (int) get(KEY_RATING);
