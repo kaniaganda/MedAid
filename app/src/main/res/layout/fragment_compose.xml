@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_compose"
+    android:orientation="vertical"
     tools:context=".fragments.ComposeFragment">
 
-
-    <EditText
-        android:id="@+id/tvReviewDescription"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="70dp"
-        android:background="@drawable/item_compose"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Write a review ..."
-        android:inputType="textMultiLine"
-        android:padding="10dp"
-        android:textColor="@color/text" />
-
-    <Button
-        android:id="@+id/postBT"
-        android:layout_width="130dp"
+    <RatingBar
+        android:id="@+id/rbDoctorRating"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvReviewDescription"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="POST"
-        app:cornerRadius="30dp" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:numStars="5"
+        android:rating="4" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/tvReviewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_compose"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Write a review ..."
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/text" />
+
+        <Button
+            android:id="@+id/postBT"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvReviewDescription"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="POST"
+            app:cornerRadius="30dp" />
+
+    </RelativeLayout>
+</LinearLayout>

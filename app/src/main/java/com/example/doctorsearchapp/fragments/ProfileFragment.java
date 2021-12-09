@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.doctorsearchapp.LoginActivity;
-import com.example.doctorsearchapp.MainActivity;
 import com.example.doctorsearchapp.R;
 import com.example.doctorsearchapp.models.Users;
 import com.parse.ParseFile;
@@ -48,7 +47,7 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
         tvUsername = view.findViewById(R.id.tvUsername);
-        tvUserId = view.findViewById(R.id.tvUserId);
+        tvUserId = view.findViewById(R.id.tvDateJoined);
         logoutBtn = view.findViewById(R.id.btnLogout);
 
         currUser = new Users(ParseUser.getCurrentUser());

@@ -75,13 +75,11 @@
 
             <CheckBox
                 android:id="@+id/favoritesBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="top"
                 android:button="@drawable/ic_favorites" />
-
-
         </LinearLayout>
-
     </LinearLayout>
 
     <RelativeLayout
