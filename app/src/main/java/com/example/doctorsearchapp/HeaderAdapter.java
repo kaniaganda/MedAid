@@ -4,6 +4,7 @@ import static com.example.doctorsearchapp.MainActivity.TAG;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -94,6 +95,10 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
             if(user.getFavorites().contains(doctor.getObjectId()))
             {
                 ((CheckBox)favoritesBtn).setChecked(true);
+            }
+            else
+            {
+                ((CheckBox)favoritesBtn).setChecked(false);
             }
 
             reviewBtn.setOnClickListener(new View.OnClickListener() {
