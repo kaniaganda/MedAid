@@ -8,6 +8,7 @@ import com.example.doctorsearchapp.R;
 import com.parse.FindCallback;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -24,6 +25,7 @@ public class Doctor extends ParseObject implements Parcelable {
     public static final String KEY_LOCATION = "location";
     public static final String KEY_REVIEW_LIST = "reviewList";
     public static final String KEY_RATING = "overallRating";
+    public static final String KEY_IMAGE = "docImage";
 
     // Empty constructor for Parceler library
     public Doctor() { }
@@ -86,6 +88,16 @@ public class Doctor extends ParseObject implements Parcelable {
                 rbOverallRating.setRating(finalRating);
             }
         });
+    }
+
+    public ParseFile getImage()
+    {
+        return getParseFile(KEY_IMAGE);
+    }
+
+    public void setImage(ParseFile image)
+    {
+        put(KEY_IMAGE, image);
     }
 
 //    public int doctorId;

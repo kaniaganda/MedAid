@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.data.StreamLocalUriFetcher;
 import com.example.doctorsearchapp.fragments.ComposeFragment;
 import com.example.doctorsearchapp.fragments.DetailFragment;
@@ -78,6 +80,7 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
         private Button searchBtn;
         private Button favoritesBtn;
         private RatingBar rbDoctorRating;
+        private ImageView businessPicIV;
         private String address;
         private List<Doctor> allDoctors;
 
@@ -91,10 +94,12 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.HeaderView
             searchBtn = itemView.findViewById(R.id.btnSearch);
             favoritesBtn = itemView.findViewById(R.id.favoritesBtn);
             rbDoctorRating = itemView.findViewById(R.id.rbDoctorRating);
+            businessPicIV = itemView.findViewById(R.id.businessPicIV);
 
             nameTV.setText(doctor.getDoctorName());
             addressTV.setText(doctor.getLocation());
             doctor.setRating(rbDoctorRating);
+            Glide.with(context).load(doctor.getImage().getUrl()).into(businessPicIV);
 
             if(user.getFavorites().contains(doctor.getObjectId()))
             {

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.doctorsearchapp.MainActivity;
 import com.example.doctorsearchapp.R;
 import com.example.doctorsearchapp.fragments.DetailFragment;
@@ -75,6 +77,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
         TextView tvDoctorName;
         TextView tvLocation;
         RatingBar rbOverallRating;
+        ImageView ivDoctorImage;
 
         public ViewHolder(View doctorView) {
             super(doctorView);
@@ -82,12 +85,14 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
             tvDoctorName = doctorView.findViewById(R.id.tvDoctorName);
             tvLocation = doctorView.findViewById(R.id.tvLocation);
             rbOverallRating = doctorView.findViewById(R.id.rbDoctorRating);
+            ivDoctorImage = doctorView.findViewById(R.id.ivDoctorImage);
         }
 
         public void bind(Doctor doctor) {
             tvDoctorName.setText(doctor.getDoctorName());
             tvLocation.setText(doctor.getLocation());
             doctor.setRating(rbOverallRating);
+            Glide.with(context).load(doctor.getImage().getUrl()).into(ivDoctorImage);
         }
     }
 }
