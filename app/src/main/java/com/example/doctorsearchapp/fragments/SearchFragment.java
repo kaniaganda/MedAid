@@ -104,7 +104,7 @@ public class SearchFragment extends Fragment {
     private void search(String queryString)
     {
         ParseQuery<Doctor> query = ParseQuery.getQuery(Doctor.class);
-        query.whereContains("doctorName", queryString);
+        query.whereContains("location", queryString);
 
         // Get all doctors
         query.findInBackground(new FindCallback<Doctor>() {
