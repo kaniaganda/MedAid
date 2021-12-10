@@ -5,7 +5,7 @@
 - [x] Design and implement cohesive UI 
 - [x] Setup image rendering with Glide
 
-**Sprint 2 Walkthrough**
+**Sprint 3 Walkthrough**
 
 <img src="walkthrough_sprint_3.gif" width=250>
 
