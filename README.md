@@ -1,5 +1,14 @@
 # DrSearch 
 
+**Sprint 3 User Stories** 
+
+- [x] Design and implement cohesive UI 
+- [x] Setup image rendering with Glide
+
+**Sprint 2 Walkthrough**
+
+<img src="walkthrough_sprint_3.gif" width=250>
+
 **Sprint 2 User Stories** 
 
 - [x] Setup doctor object and render views on search screen
@@ -9,8 +18,6 @@
 **Sprint 2 Walkthrough**
 
 <img src="walkthrough_sprint_2.gif" width=250>
-
-#
 
 **Sprint 1 User Stories** 
 
