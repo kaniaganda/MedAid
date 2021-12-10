@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class ComposeFragment extends Fragment {
     Button postBtn;
     TextView reviewDescription;
     Doctor doctor;
+    RatingBar rbDoctorRating;
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -46,6 +48,7 @@ public class ComposeFragment extends Fragment {
 
         postBtn = view.findViewById(R.id.postBT);
         reviewDescription = view.findViewById(R.id.tvReviewDescription);
+        rbDoctorRating = view.findViewById(R.id.rbDoctorRating);
 
         // Get doctor object from DetailFragment/HeaderAdapter
         Bundle b = this.getArguments();
@@ -57,18 +60,18 @@ public class ComposeFragment extends Fragment {
                 if (reviewDescription.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(),"Couldn't save the review", Toast.LENGTH_SHORT).show();
                 } else {
-                    saveReview(reviewDescription.getText().toString(), ParseUser.getCurrentUser());
+                    saveReview(reviewDescription.getText().toString(), rbDoctorRating.getRating(), ParseUser.getCurrentUser());
                 }
             }
         });
     }
 
-    private void saveReview(String newReview, ParseUser currUser)
+    private void saveReview(String newReview, double rating,ParseUser currUser)
     {
         Reviews review = new Reviews();
         review.setReview(newReview);
         review.setUser(currUser);
-        review.setRating(4);
+        review.setRating((int) rating);
 
         review.saveInBackground(new SaveCallback() {
             @Override
