@@ -90,8 +90,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="100dp"
             android:backgroundTint="@android:color/transparent"
-            android:textColor="@color/text"
-            android:text="Log Out" />
+            android:text="Log Out"
+            android:textColor="@color/text" />
     </RelativeLayout>
 
 </LinearLayout>
