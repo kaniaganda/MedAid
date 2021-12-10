@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.doctorsearchapp.LoginActivity;
+import com.example.doctorsearchapp.MainActivity;
 import com.example.doctorsearchapp.R;
 import com.example.doctorsearchapp.models.Users;
 import com.parse.ParseFile;
@@ -30,6 +31,7 @@ public class ProfileFragment extends Fragment {
     private TextView tvUserId;
     private Users currUser;
     private Button logoutBtn;
+    private Button btnAddDoctor;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -49,6 +51,7 @@ public class ProfileFragment extends Fragment {
         tvUsername = view.findViewById(R.id.tvUsername);
         tvUserId = view.findViewById(R.id.tvDateJoined);
         logoutBtn = view.findViewById(R.id.btnLogout);
+        btnAddDoctor = view.findViewById(R.id.btnAddDoctor);
 
         currUser = new Users(ParseUser.getCurrentUser());
         ParseFile profileImage = currUser.getProfilePic();
@@ -65,6 +68,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 signOut();
+            }
+        });
+
+        btnAddDoctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity activity = (MainActivity) getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, new BusinessFragment() ).commit();
             }
         });
     }
