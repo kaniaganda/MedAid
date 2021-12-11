@@ -21,7 +21,7 @@
 
 **Sprint 1 User Stories** 
 
-- [x] L ogin Screen (Username, password, and application logo)
+- [x] Login Screen (Username, password, and application logo)
 - [x] Registration Screen (Username, password, age, phone number)
 - [x] Profile Screen (Will have username, profile image, and past reviews)
 - [x] Main Screen (Include search for doctors, stream of doctors around the area)
