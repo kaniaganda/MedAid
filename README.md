@@ -1,38 +1,5 @@
 # DrSearch 
 
-**Sprint 3 User Stories** 
-
-- [x] Design and implement cohesive UI 
-- [x] Setup image rendering with Glide
-
-**Sprint 3 Walkthrough**
-
-<img src="walkthrough_sprint_3.gif" width=250>
-
-**Sprint 2 User Stories** 
-
-- [x] Setup doctor object and render views on search screen
-- [x] Setup review object and render views on detail screen
-- [x] Send users to Google Maps for directions from detail screen
-
-**Sprint 2 Walkthrough**
-
-<img src="walkthrough_sprint_2.gif" width=250>
-
-**Sprint 1 User Stories** 
-
-- [x] Login Screen (Username, password, and application logo)
-- [x] Registration Screen (Username, password, age, phone number)
-- [x] Profile Screen (Will have username, profile image, and past reviews)
-- [x] Main Screen (Include search for doctors, stream of doctors around the area)
-- [x] Favorites Screen (The page will include doctors favorited by the user)
-- [x] Details Screen (Will provide further information about a specific doctor)
-- [x] Compose Screen (Enables users to write a review)
-
-**Sprint 1 Walkthrough**
-
-<img src="walkthrough_sprint_1.gif" width=250>
-
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
@@ -42,6 +9,9 @@
 ## Overview
 ### Description
 An Android mobile application where users can search, review, and recommend doctors and other medical experts in their area.
+
+### Walkthrough
+<img src="walkthrough_sprint_final.gif" width=250>
 
 ### App Evaluation
 - **Category:** Health 
@@ -173,7 +143,38 @@ Doctor
 - Favorites Screen
   - (Read/GET) Query user object favorites
 
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+## Sprints
+**Sprint 3 User Stories** 
+
+- [x] Design and implement cohesive UI 
+- [x] Setup image rendering with Glide
+
+**Sprint 3 Walkthrough**
+
+<img src="walkthrough_sprint_3.gif" width=250>
+
+**Sprint 2 User Stories** 
+
+- [x] Setup doctor object and render views on search screen
+- [x] Setup review object and render views on detail screen
+- [x] Send users to Google Maps for directions from detail screen
+
+**Sprint 2 Walkthrough**
+
+<img src="walkthrough_sprint_2.gif" width=250>
+
+**Sprint 1 User Stories** 
+
+- [x] Login Screen (Username, password, and application logo)
+- [x] Registration Screen (Username, password, age, phone number)
+- [x] Profile Screen (Will have username, profile image, and past reviews)
+- [x] Main Screen (Include search for doctors, stream of doctors around the area)
+- [x] Favorites Screen (The page will include doctors favorited by the user)
+- [x] Details Screen (Will provide further information about a specific doctor)
+- [x] Compose Screen (Enables users to write a review)
+
+**Sprint 1 Walkthrough**
+
+<img src="walkthrough_sprint_1.gif" width=250>
 
 
