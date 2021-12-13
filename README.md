@@ -84,15 +84,13 @@ An Android mobile application where users can search, review, and recommend doct
 ## Wireframes
 <img src="wireframe_sketch.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
+### Digital Wireframes & Mockups
 <img src="wireframe.png" width=600>
 
 ### [BONUS] Interactive Prototype
 <img src="prototype.gif" width=250>
 
 ## Schema 
-[This section will be completed in Unit 9]
-
 ### Models
 User
 
