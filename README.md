@@ -1,5 +1,11 @@
 # DrSearch 
 
+## Authors
+- [Adlai Morales-Bravo](https://github.com/AdlaiMB)
+- [Kania Gandasetiawan](https://github.com/kaniaganda)
+- [Johann Fernandez](https://github.com/Conspiciens)
+- [Yaroslav Malev](https://github.com/FarFloater)
+
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
